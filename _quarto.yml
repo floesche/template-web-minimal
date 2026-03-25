@@ -14,14 +14,14 @@ filters:
 
 website:
   title: "My Website"
-  site-url: https://yourusername.github.io/your-repo-name/
+  site-url: https://floesche.github.io/template-web-minimal/
   navbar:
     left:
       - href: index.qmd
         text: Home
     right:
       - icon: github
-        href: https://github.com/yourusername/your-repo-name
+        href: https://github.com/floesche/template-web-minimal
   page-footer:
     center: ""
 
