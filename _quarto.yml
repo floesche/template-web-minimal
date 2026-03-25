@@ -1,0 +1,63 @@
+project:
+  type: website
+  output-dir: public
+  pre-render:
+    - 'python -c "import pathlib; [p.unlink() for p in pathlib.Path(''.'').rglob(''*'') if p.suffix in {''.aux'',''.log'',''.tex'',''.out'',''.typ''} and ''.pixi'' not in p.parts and ''.git'' not in p.parts and ''_helper'' not in p.parts]"'
+  preview:
+    port: 8000
+
+execute:
+  freeze: auto
+
+filters:
+  - _helper/git-version.lua
+
+website:
+  title: "My Website"
+  site-url: https://yourusername.github.io/your-repo-name/
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+    right:
+      - icon: github
+        href: https://github.com/yourusername/your-repo-name
+  page-footer:
+    center: ""
+
+format:
+  html:
+    theme: yeti
+    toc: true
+    code-fold: true
+    link-external-icon: true
+    link-external-newwindow: false
+    embed-resources: false
+    format-links:
+      - format: typst
+        text: PDF
+        icon: file-pdf
+      - docx
+      - format: gfm
+        text: Markdown (gfm)
+        icon: markdown
+  typst:
+    section-numbering: "1.1.1.1"
+    papersize: us-letter
+    fontsize: 10pt
+    margin:
+      x: 1in
+      y: 1in
+    columns: 2
+    template-partials:
+      - _helper/typst-template.typ
+      - _helper/typst-show.typ
+      - _helper/biblio.typ
+    filters:
+      - _helper/detect-citations.lua
+      - _helper/video-placeholder.lua
+    include-before-body:
+      - _helper/figure-span.typ
+      - _helper/inline-code-wrap.typ
+  docx: default
+  gfm: default
