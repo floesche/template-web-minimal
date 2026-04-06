@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: public
   pre-render:
-    - 'python -c "import pathlib; [p.unlink() for p in pathlib.Path(''.'').rglob(''*'') if p.suffix in {''.aux'',''.log'',''.tex'',''.out'',''.typ''} and ''.pixi'' not in p.parts and ''.git'' not in p.parts and ''_helper'' not in p.parts]"'
+    - python _helper/cleanup.py
   preview:
     port: 8000
 

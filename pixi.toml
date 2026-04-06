@@ -9,7 +9,7 @@ version = "0.1.0"
 [tasks]
 preview = { cmd = ["quarto", "preview", "index.qmd"] }
 render = { cmd = ["quarto", "render"] }
-clean = { cmd = "python -c \"import pathlib, shutil; [p.unlink() for p in pathlib.Path('.').rglob('*') if p.suffix in {'.aux','.log','.tex','.out','.typ'} and '.pixi' not in p.parts and '.git' not in p.parts and '_helper' not in p.parts]; shutil.rmtree('public', ignore_errors=True)\"" }
+clean = { cmd = "python _helper/cleanup.py && python -c \"import shutil; shutil.rmtree('public', ignore_errors=True)\"" }
 
 [dependencies]
 quarto = ">=1.5.57,<2"
